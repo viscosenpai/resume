@@ -1,5 +1,5 @@
 import fs from "fs";
-import { mdToPdf } from "md-to-pdf";
+import mdToPdf from "md-to-pdf";
 
 (async () => {
   const pdf = await mdToPdf(
