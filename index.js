@@ -1,6 +1,13 @@
-// index.js
-import mtp from "md-to-pdf";
+import fs from "fs";
+import { mdToPdf } from "md-to-pdf";
 
-mtp("./README.md", { dest: "README.pdf" }).then(() => {
-  console.log("mtp Done");
-});
+(async () => {
+  const pdf = await mdToPdf(
+    { path: "README.md" },
+    { dest: "README.pdf" }
+  ).catch(console.error);
+
+  if (pdf) {
+    fs.writeFileSync(pdf.filename, pdf.content);
+  }
+})();
